@@ -1,8 +1,9 @@
 import styles from './index.css'
 import { Icon, Menu, Layout } from 'antd'
 import { connect } from 'dva'
+import { Link, withRouter } from 'umi'
 
-const GlobalSider = ({ collapsed }) => {
+const GlobalSider = ({ collapsed, location: { pathname } }) => {
   return (
     <Layout.Sider
       collapsible
@@ -12,28 +13,26 @@ const GlobalSider = ({ collapsed }) => {
       <Menu
         theme="dark"
         mode="inline"
-        defaultSelectedKeys={['1']}
+        defaultSelectedKeys={[pathname]}
       >
 
         <Menu.Item 
-          key="1" 
+          key="/" 
         >
-          <Icon type='user' />
-          <span>nav 1</span>
+          <Link to='/'>
+            <Icon type="home" theme="filled" />
+            <span>Welcome</span>
+          </Link>
         </Menu.Item>
 
+        
         <Menu.Item
-          key="2"
+          key="/banner-manage"
         >
-          <Icon type='video-camera' />
-          <span>nav 2</span>
-        </Menu.Item>
-
-        <Menu.Item 
-          key="3"
-        >
-          <Icon type='upload' />
-          <span>nav 3</span>
+          <Link to='/banner-manage'>
+            <Icon type="fire" theme="filled" />
+            <span>nav 2</span>
+          </Link>
         </Menu.Item>
 
       </Menu>
@@ -45,4 +44,4 @@ export default connect(
   ({ global }) => ({
     collapsed: global.collapsed
   })
-)(GlobalSider)
+)(withRouter(GlobalSider))
