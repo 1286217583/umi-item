@@ -6,6 +6,8 @@ import {
 } from 'antd'
 import styles from './index.css'
 
+import { connect } from 'dva'
+
 const Login = (props) => {
   const {
     getFieldDecorator,
@@ -16,7 +18,7 @@ const Login = (props) => {
     e.preventDefault();
     validateFields((err, values) => {
       if (!err) {
-        console.log(values);
+        props.asyncLogin(values)
       }
     })
   }
@@ -83,4 +85,14 @@ const Login = (props) => {
   )
 }
 
-export default Form.create()(Login)
+export default connect(
+  null,
+  {
+    asyncLogin(payload) {
+      return {
+        type: 'global/asyncLogin',
+        payload
+      }
+    }
+  }
+)(Form.create()(Login))

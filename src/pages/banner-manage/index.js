@@ -1,3 +1,7 @@
+/**
+ * Routes:
+ *   - ./src/routes/privateRoute
+ */
 
 const BannnerManage = () => {
   return (

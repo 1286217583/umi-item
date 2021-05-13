@@ -1,3 +1,8 @@
+/**
+ * Routes:
+ *   - ./src/routes/privateRoute
+ */
+
 import styles from './index.css';
 
 export default function() {
