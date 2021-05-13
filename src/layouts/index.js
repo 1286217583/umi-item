@@ -4,7 +4,18 @@ import GlobalSider from '../components/GlobalSider'
 import GlobalHeader from '../components/GlobalHeader'
 
 const BasicLayout = (props) => {
-  const { children } = props
+  const { children, location } = props
+
+  if (location.pathname === '/login') {
+    return (
+      <Layout>
+        <Layout.Content>
+          { children }
+        </Layout.Content>
+      </Layout>
+    )
+  }
+
   return (
     <Layout>
       {/* 左侧Menu start */}
