@@ -1,0 +1,22 @@
+
+.page {
+  /* padding: 24px; */
+  overflow-y: auto;
+}
+
+.content > div {
+  min-height: 100%;
+  background-color: #fff
+}
+
+.showImg {
+  width: 100px;
+  height: 50px;
+}
+
+.img {
+  width: 100px;
+  height: 50px;
+}
+
+
