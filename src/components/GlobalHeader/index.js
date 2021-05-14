@@ -1,6 +1,12 @@
 
 import styles from './index.css'
-import { Layout, Icon } from 'antd'
+import {
+  Layout,
+  Icon,
+  Dropdown,
+  Menu,
+  Avatar
+} from 'antd'
 import { connect } from 'dva'
 const { Header } = Layout
 
@@ -20,10 +26,22 @@ const { Header } = Layout
 //     }
 //   }
 // )
+const headerMenu = (
+  <Menu>
+    <Menu.Item onClick={() => {
+      window.localStorage.removeItem('userInfo')
+      window.location.reload();
+    }}>
+      <Icon type='logout' />
+      <span>退出登录</span>
+    </Menu.Item>
+  </Menu>
+)
 
 const GlobalHeader = ({
   collapsed,
-  setCollapsed
+  setCollapsed,
+  userInfo
 }) => {
   return (
     <Header
@@ -38,13 +56,27 @@ const GlobalHeader = ({
           setCollapsed()
         }}
       />
+
+      <div className={styles.right}>
+        <Dropdown overlay={ headerMenu }>
+          <div className={styles.user}>
+            <Avatar
+            size={30}
+            icon='user'
+            ></Avatar>
+
+            <p>{ userInfo && userInfo.nickname }</p>
+          </div>
+        </Dropdown>
+      </div>
     </Header>
   )
 }
 
 export default connect(
   ({ global }) => ({
-    collapsed: global.collapsed
+    collapsed: global.collapsed,
+    userInfo: global.userInfo
   }),
   (dispatch) => {
     return {

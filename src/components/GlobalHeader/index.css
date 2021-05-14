@@ -1,16 +1,32 @@
 .header {
+  display: flex;
+  justify-content: space-between;
   background-color: #fff;
-  padding: 0;
+  padding: 0 24px;
 }
 
 .trigger {
   font-size: 18px;
   line-height: 64px;
-  padding: 0 24px;
   cursor: pointer;
   transition: color 0.3s;
 }
 
 .trigger:hover {
   color: #1890ff;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 0 10px;
+}
+
+.user p {
+  margin-left: 10px;
+}
+
+.user:hover {
+  background: rgba(0,0,0,.05);
 }
